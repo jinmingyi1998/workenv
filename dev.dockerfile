@@ -5,11 +5,11 @@ ENV TZ=Asia/Shanghai
 COPY sources.list.tuna /etc/apt/sources.list
 
 RUN apt-get update && \
-    apt-get install -y \
-    git git-lfs wget curl vim \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    git git-lfs wget curl vim unzip zsh \
     tree ncdu htop tmux nnn nload jq language-pack-en language-pack-zh-hans \
-    ca-certificates gpg sudo \
-    net-tools make gcc g++ zlib1g-dev libtool automake libgmp-dev gfortran unzip && \
+    ca-certificates gpg sudo net-tools clang-format clangd \
+    make gcc g++ zlib1g-dev libtool lsb-core automake libgmp-dev gfortran  && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /opt/miniconda3 && \
